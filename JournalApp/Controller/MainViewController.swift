@@ -9,6 +9,15 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var notes: [Note] = [
+        Note(author: "me", date: Date(), body: "some words to add later"),
+        Note(author: "me", date: Date(), body: "some words to add later"),
+        Note(author: "me", date: Date(), body: "some words to add later"),
+        
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,3 +36,19 @@ class MainViewController: UIViewController {
     */
 
 }
+
+//extension MainViewController: UITableViewDelegate {
+//    
+//}
+//
+//extension MainViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return notes.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        var cell = tableView.dequeueReusableCell(withIdentifier: <#T##String#>, for: <#T##IndexPath#>)
+//    }
+//    
+//    
+//}
