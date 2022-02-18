@@ -11,12 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var notes: [Note] = [
-        Note(author: "me", date: Date(), body: "some words to add later"),
-        Note(author: "me", date: Date(), body: "some words to add later"),
-        Note(author: "me", date: Date(), body: "some words to add later"),
-        
-    ]
+    
+    // for test branch
     
     
     override func viewDidLoad() {
@@ -24,20 +20,33 @@ class ViewController: UIViewController {
         
         let settingsView = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
         let newNoteView = NewNoteViewController(nibName: "NewNoteViewController", bundle: nil)
+        let mainView = MainViewController(nibName: "MainViewController", bundle: nil)
         
-        self.addChild(settingsView)
-        self.scrollView.addSubview(settingsView.view)
-        settingsView.didMove(toParent: self)
+        
         
         self.addChild(newNoteView)
         self.scrollView.addSubview(newNoteView.view)
         newNoteView.didMove(toParent: self)
         
+        self.addChild(mainView)
+        self.scrollView.addSubview(mainView.view)
+        mainView.didMove(toParent: self)
+        
+        self.addChild(settingsView)
+        self.scrollView.addSubview(settingsView.view)
+        settingsView.didMove(toParent: self)
+        
+        var mainViewFrame: CGRect = mainView.view.frame
+        mainViewFrame.origin.x = self.view.frame.width
+        mainView.view.frame = mainViewFrame
+        
         var newNoteViewFrame: CGRect = newNoteView.view.frame
-        newNoteViewFrame.origin.x = self.view.frame.width
+        newNoteViewFrame.origin.x = self.view.frame.width * 2
         newNoteView.view.frame = newNoteViewFrame
         
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width * 2, height: self.view.frame.size.height)
+        
+        self.scrollView.contentSize = CGSize(width: self.view.frame.width * 3, height: self.view.frame.size.height)
+        self.scrollView.scrollRectToVisible(mainViewFrame, animated: true)
     }
 
 
