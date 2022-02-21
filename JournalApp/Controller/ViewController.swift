@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     
-    // for test branch
     
     
     override func viewDidLoad() {
